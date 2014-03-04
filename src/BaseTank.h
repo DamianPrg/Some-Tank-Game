@@ -11,6 +11,44 @@
 
 #include "GameObject.h"
 
+// State machine
+class FSM
+{
+public:
+  struct State {
+    State(std::string n, std::function<void()> _cb) {
+      name = n;
+      cb = _cb;
+    }
+    
+    std::string name;
+    std::function<void()> cb;
+  };
+  
+  std::vector<State> states;
+  
+  void addState(State state) {
+    states.push_Back(state);
+  }
+  
+  void setState(std::string name) {
+    for(int i = 0; i < states.size(); i++)
+    {
+      if(states[i].name == name) {
+        state = &states[i];
+        break;
+      }
+    }
+  }
+  
+  State* state;
+  
+  void update() {
+    assert(state);
+    state->cb();
+  }
+};
+
 class BaseTank : public GameObject
 {
 public:
@@ -19,6 +57,8 @@ protected:
   
   const float smoothRot=0.01f;
   const float speedRot =10.0f;
+  
+  FSM aiFSM;//only to be used by AI tank
 };
 
 #endif /* defined(__Some_Tank_Game__BaseTank__) */
