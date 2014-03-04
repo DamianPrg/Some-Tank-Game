@@ -220,17 +220,25 @@ void CGame::load(std::string filename)
         
         if(contents[i] == "player") // player pos_x pos_y rot
         {
-            
+            float x = atof(contents[i+1].c_str());
+            float y = atof(contents[i+2].c_str());
+            float rot = atof(contents[i+3].c_str());
         }
         
         if(contents[i] == "enemy_tank") // enemy_tank pos_x pos_y rot state
         {
-            
+            float x = atof(contents[i+1].c_str());
+            float y = atof(contents[i+2].c_str());
+            flaot rot = atof(contents[i+3].c_str());
+            std::string _state = contents[i+4];
         }
         
         if(contents[i] == "enemy_truck") // enemy_truck pos_x pos_y rot state
         {
-            
+            float x = atof(contents[i+1].c_str());
+            float y = atof(contents[i+2].c_str());
+            flaot rot = atof(contents[i+3].c_str());
+            std::string _state = contents[i+4];
         }
         
         if(contents[i] == "train")
@@ -240,7 +248,15 @@ void CGame::load(std::string filename)
         
         if(contents[i] == "info") // info MESSAGE ; pos_x pos_y size_x size_y
         {
-            
+            std::string message="";
+            int index = i+1;
+            while(contents[index] != ";")
+            {
+                message += contents[index];
+            }
+            index += 1;
+            float x = atof(contents[index].c_str());
+            float y = atof(contents[index+1].c_str());
         }
     }
 }
