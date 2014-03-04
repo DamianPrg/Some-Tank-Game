@@ -15,6 +15,10 @@
 class FSM
 {
 public:
+  FSM() {
+    state = nullptr;
+  }
+
   struct State {
     State(std::string n, std::function<void()> _cb) {
       name = n;
@@ -49,7 +53,8 @@ public:
   }
 };
 
-class BaseTank : public GameObject
+// vehicle/tank
+class IVehBaseTank : public GameObject
 {
 public:
 protected:
@@ -59,6 +64,16 @@ protected:
   const float speedRot =10.0f;
   
   FSM aiFSM;//only to be used by AI tank
+};
+
+class EnemyTank : public IVehBaseTank
+{
+  
+};
+
+class PlayerTank : public IVehBaseTank
+{
+  
 };
 
 #endif /* defined(__Some_Tank_Game__BaseTank__) */
