@@ -200,6 +200,7 @@ void CGame::load(std::string filename)
             item->setGfx(path);
             item->pos(Vec2(x,y));
             item->rot(rot);
+            item->setCollidable(static_cast<bool>(c));
             addGameObject(item);
         }
         
