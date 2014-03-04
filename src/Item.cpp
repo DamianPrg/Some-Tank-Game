@@ -14,7 +14,7 @@ void Item::initialize()
     itemGfxPath += gfx;
     itemGfx.load(itemGfxPath);
     
-    name = "Item";
+    name = "Item";//name
 }
 
 void Item::update(float dt)
