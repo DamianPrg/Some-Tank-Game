@@ -13,6 +13,8 @@ void Item::initialize()
     std::string itemGfxPath = "data/gfx/items/";
     itemGfxPath += gfx;
     itemGfx.load(itemGfxPath);
+    
+    name = "Item";
 }
 
 void Item::update(float dt)
