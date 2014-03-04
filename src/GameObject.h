@@ -65,6 +65,8 @@ public:
     
     void setShouldBeRemoved(bool b) { shouldBeRemoved=b; }
     bool getShouldBeRemoved() { return shouldBeRemoved; }
+    
+    bool getCollidable() { return collidable; } void setCollidable(bool n) { collidable = n; }
 protected:
     std::string name;
     Vec2 position, velocity;
