@@ -15,6 +15,10 @@ class BaseTank : public GameObject
 {
 public:
 protected:
+  float turretRot;
+  
+  const float smoothRot=0.01f;
+  const float speedRot =10.0f;
 };
 
 #endif /* defined(__Some_Tank_Game__BaseTank__) */
