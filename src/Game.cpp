@@ -71,20 +71,20 @@ void CGame::update()
         }
     }
     
+    // check for collisions
+    for(int i = 0; i < gameObjects.size(); i++) {
+        for(int j = 0; j < gameObjects.size(); j++)
+        {
+            if(i != j)
+            {
+                
+            }
+        }
+    }
+    
     for(auto it = gameObjects.begin(); it != gameObjects.end(); it++)
     {
         (*it)->update(dt);
-    }
-    
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    {
-        std::shared_ptr<Explosion> expl = std::make_shared<Explosion>();
-        
-        sf::Vector2i mp = sf::Mouse::getPosition(window);
-        
-        expl->pos(Vec2(mp.x,mp.y));
-        
-        addGameObject(expl);
     }
 }
 
@@ -188,7 +188,7 @@ void CGame::load(std::string filename)
     // parsing
     for(int i = 0; i < contents.size(); i++)
     {
-        if(contents[i] == "item")
+        if(contents[i] == "item") // item path pos_yx pos_y rot collidable
         {
             std::string path = contents[i+1];
             float       x    = atof(contents[i+2].c_str());
@@ -215,18 +215,31 @@ void CGame::load(std::string filename)
             float       y    = atof(contents[i+3].c_str());
             float       rot  = atof(contents[i+4].c_str());
             int         repeat=atoi(contents[i+5].c_str());
+        }
+        
+        if(contents[i] == "player") // player pos_x pos_y rot
+        {
             
-            repeat=5;
-            for(int i = 0; i < repeat; i++)
-            {
-                std::shared_ptr<Item> item = std::make_shared<Item>();
-                
-                item->setGfx(path);
-                item->pos(Vec2(x + (repeat*30.0f),
-                               y + repeat*100.0f));
-                item->rot(rot);
-                addGameObject(item);
-            }
+        }
+        
+        if(contents[i] == "enemy_tank") // enemy_tank pos_x pos_y rot state
+        {
+            
+        }
+        
+        if(contents[i] == "enemy_truck") // enemy_truck pos_x pos_y rot state
+        {
+            
+        }
+        
+        if(contents[i] == "train")
+        {
+            
+        }
+        
+        if(contents[i] == "info") // info MESSAGE ; pos_x pos_y size_x size_y
+        {
+            
         }
     }
 }
